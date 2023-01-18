@@ -3,11 +3,11 @@ import { Mycalendar } from "../components/myCalendar";
 import reactLogo from "../assets/react.svg";
 import "../App.css";
 
-function App() {
+function Home() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
+    <div className="Home">
       <div>
         <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
