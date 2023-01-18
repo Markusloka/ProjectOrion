@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Mycalendar } from "../src/components/myCalendar";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { Mycalendar } from "../components/myCalendar";
+import reactLogo from "../assets/react.svg";
+import "../App.css";
 
 function App() {
   const [count, setCount] = useState(0);
