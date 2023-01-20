@@ -23,7 +23,8 @@
 }
 
 .slacklogo {
-  height: 1.5em;
+  display: flex;
+ height: 1.5em;
   padding-top: 15px;
   padding-left: 12px;
 }
