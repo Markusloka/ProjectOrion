@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Mycalendar } from "../components/myCalendar";
-import reactLogo from "../assets/react.svg";
+import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 
 function Home() {
   return (
     <div className="Home">
-      <div>
-        <img src={reactLogo} className="logo react" alt="React logo" />
+      <div className="logoTitle">
+        <img src={visibaLogo} className="logo react" alt="React logo" />
+        <h1 className="homeTitle">Parkering</h1>
       </div>
-      <h1>Visiba Parkering!</h1>
+
       <div className="card">
         <Mycalendar></Mycalendar>
       </div>

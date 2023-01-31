@@ -4,7 +4,13 @@
   padding: 2rem;
   text-align: center;
 }
-
+.logoTitle {
+  display: flex;
+}
+.homeTitle {
+  padding-top: 25px;
+  padding-left: 20px;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
