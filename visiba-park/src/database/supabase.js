@@ -4,12 +4,12 @@ const supabaseUrl = "https://vheyvgfbvknlijdnvfrn.supabase.co";
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-async function signInWithSlack() {
+export async function signInWithSlack() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "slack",
   });
 }
-async function signout() {
+export async function signout() {
   const { error } = await supabase.auth.signOut();
 }
 
