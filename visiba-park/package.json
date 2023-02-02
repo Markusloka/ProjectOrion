@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.4.0",
+    "@supabase/supabase-js": "^2.7.0",
     "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-calendar": "^4.0.0",
