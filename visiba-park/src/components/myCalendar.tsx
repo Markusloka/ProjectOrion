@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../App.css";
 
-export function Mycalendar() {
+export default function Mycalendar() {
   const [date, setDate] = useState(new Date());
   const today = new Date();
   const maxDate = new Date(today.setMonth(today.getMonth() + 1));
