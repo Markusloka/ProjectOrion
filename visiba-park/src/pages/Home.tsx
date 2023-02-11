@@ -1,7 +1,31 @@
-import { useState } from "react";
-import { Mycalendar } from "../components/myCalendar";
+import { useState, useEffect } from "react";
+import Mycalendar from "../components/myCalendar";
+import supabase from "../database/supabase.js";
 import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
+
+export const bookDate = () => {
+  const [bookingDates, setBookingDates] = useState([]);
+  const [bookingDate, setBookingDate] = useState({ Date });
+  const {} = bookingDate;
+};
+
+useEffect(() => {
+  fetchbookingDates();
+}, []);
+
+async function fetchbookingDates() {
+  const { data } = await supabase.from("bookning").select();
+
+  fetchbookingDates();
+}
+
+export async function createBooking() {
+  await supabase.from("bookning").insert([{ Date }]).single();
+
+  //setbookingDates();
+  fetchbookingDates();
+}
 
 function Home() {
   return (
