@@ -20,9 +20,6 @@ export default function Mycalendar() {
       <p className="text-center">
         <span className="bold">Selected Date:</span> {date.toDateString()}
       </p>
-      <button className="button" onClick={createBooking}>
-        Boka parkering
-      </button>
     </div>
   );
 }

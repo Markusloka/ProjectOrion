@@ -17,13 +17,13 @@ useEffect(() => {
 async function fetchbookingDates() {
   const { data } = await supabase.from("bookning").select();
 
-  fetchbookingDates();
+  setBookingDate(data);
 }
 
-export async function createBooking() {
+async function createBooking() {
   await supabase.from("bookning").insert([{ Date }]).single();
 
-  //setbookingDates();
+  setbookingDate({ Date });
   fetchbookingDates();
 }
 
@@ -38,6 +38,9 @@ function Home() {
       <div className="card">
         <Mycalendar></Mycalendar>
       </div>
+      <button className="button" onClick={createBooking}>
+        Boka parkering
+      </button>
     </div>
   );
 }
