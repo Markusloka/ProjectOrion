@@ -10,20 +10,16 @@ export const bookDate = () => {
   const {} = bookingDate;
 };
 
-useEffect(() => {
-  fetchbookingDates();
-}, []);
-
 async function fetchbookingDates() {
   const { data } = await supabase.from("bookning").select();
 
-  setBookingDate(data);
+  //setBookingDate(data);
 }
 
 async function createBooking() {
   await supabase.from("bookning").insert([{ Date }]).single();
 
-  setbookingDate({ Date });
+  //setbookingDate({ Date });
   fetchbookingDates();
 }
 
