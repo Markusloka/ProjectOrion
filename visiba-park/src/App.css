@@ -48,9 +48,9 @@
   display: flex;
   background-image: linear-gradient(
     92.88deg,
-    #455eb5 9.16%,
-    #5643cc 43.89%,
-    #673fd7 64.72%
+    #12811a 9.16%,
+    #267013 43.89%,
+    #135e00 64.72%
   );
   border-radius: 8px;
   border-style: none;
@@ -73,7 +73,7 @@
 }
 
 .signIn-button:hover {
-  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  box-shadow: rgba(38, 194, 18, 0.5) 0 1px 30px;
   transition-duration: 0.1s;
 }
 
@@ -137,7 +137,7 @@ abbr[title] {
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   background: #d4a71333;
-  color: #d4a713;
+  color: #ffffff;
   border-radius: 6px;
 }
 
@@ -145,7 +145,7 @@ abbr[title] {
   background: #d4a71333;
   border-radius: 6px;
   font-weight: bold;
-  color: #d4a713;
+  color: #5049bb;
 }
 
 .react-calendar__tile--now:enabled:hover,
@@ -153,12 +153,12 @@ abbr[title] {
   background: #d4a71333;
   border-radius: 6px;
   font-weight: bold;
-  color: #4d13d4;
+  color: #ffffff;
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-  background: #d4a71333;
+  background: #ffffff4f;
 }
 
 .react-calendar__tile--active {
@@ -175,5 +175,5 @@ abbr[title] {
 }
 
 .react-calendar__tile:disabled {
-  background-color: #471313;
+  background-color: #221e1e;
 }

@@ -19,7 +19,7 @@
       "rewrite": "/invalid-invitation-error.html"
     },
     "401": {
-      "redirect": "/Sign_In",
+      "redirect": "/SignIn",
       "statusCode": 302
     },
     "403": {
