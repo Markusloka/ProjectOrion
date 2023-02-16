@@ -16,12 +16,12 @@ async function fetchbookingDates() {
   //setBookingDate(data);
 }
 
-async function createBooking() {
+/*async function createBooking() {
   await supabase.from("bookning").insert([{ Date }]).single();
 
   //setbookingDate({ Date });
   fetchbookingDates();
-}
+}*/
 
 function Home() {
   return (
@@ -34,9 +34,7 @@ function Home() {
       <div className="card">
         <Mycalendar></Mycalendar>
       </div>
-      <button className="button" onClick={createBooking}>
-        Boka parkering
-      </button>
+      <button className="button">Boka parkering</button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
-import { createBooking } from "../pages/Home";
+import createBooking from "../pages/Home";
 import "react-calendar/dist/Calendar.css";
 import "../App.css";
 
