@@ -4,25 +4,6 @@ import supabase from "../database/supabase.js";
 import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 
-export const bookDate = () => {
-  const [bookingDates, setBookingDates] = useState([]);
-  const [bookingDate, setBookingDate] = useState({ Date });
-  const {} = bookingDate;
-};
-
-async function fetchbookingDates() {
-  const { data } = await supabase.from("bookning").select();
-
-  //setBookingDate(data);
-}
-
-/*async function createBooking() {
-  await supabase.from("bookning").insert([{ Date }]).single();
-
-  //setbookingDate({ Date });
-  fetchbookingDates();
-}*/
-
 function Home() {
   return (
     <div className="Home">
@@ -34,7 +15,6 @@ function Home() {
       <div className="card">
         <Mycalendar></Mycalendar>
       </div>
-      <button className="button">Boka parkering</button>
     </div>
   );
 }
