@@ -9,7 +9,6 @@ function Home() {
     <div className="Home">
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
-        <h1 className="homeTitle">Parkering</h1>
       </div>
 
       <div className="card">
