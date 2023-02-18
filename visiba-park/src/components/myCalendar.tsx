@@ -27,6 +27,7 @@ export default function Mycalendar() {
 
   function selectDate() {
     const pickedDate = date.toDateString();
+    console.log(pickedDate);
   }
 
   return (
