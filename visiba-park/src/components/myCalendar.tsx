@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import supabase from "../database/supabase.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../App.css";
@@ -8,9 +9,24 @@ export default function Mycalendar() {
   const today = new Date();
   const maxDate = new Date(today.setMonth(today.getMonth() + 1));
 
-  function createBooking() {
-    const pickedDate = date.toUTCString();
-    console.log(pickedDate);
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  async function fetchBookings() {
+    const { data } = await supabase.from("bookning").select();
+    setDate(date);
+  }
+
+  async function createBooking() {
+    await supabase.from("bookning").insert({ selectDate }).single();
+
+    setDate(date);
+    fetchBookings();
+  }
+
+  function selectDate() {
+    const pickedDate = date.toDateString();
   }
 
   return (
@@ -22,7 +38,7 @@ export default function Mycalendar() {
         minDate={new Date()}
       />
       <p className="text-center">
-        <span className="bold">Selected Date:</span> {date.toUTCString()}
+        <span className="bold">Selected Date:</span> {date.toDateString()}
       </p>
       <button className="button" onClick={createBooking}>
         Boka parkering

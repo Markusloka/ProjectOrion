@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Mycalendar from "../components/myCalendar";
-import supabase from "../database/supabase.js";
 import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 
