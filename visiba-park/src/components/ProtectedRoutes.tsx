@@ -1,14 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Signin from "../pages/Sign_in";
 
-const useAuth = () => {
-  const user = { loggedIn: false };
-  return user && user.loggedIn;
+const PrivateRoutes = () => {
+  let auth = { provider_token: false };
+  return auth.provider_token ? <Outlet /> : <Navigate to="/Signin" />;
 };
 
-const ProtectedRoutes = () => {
-  const isAuth = useAuth();
-  return isAuth ? <Outlet /> : <Signin />;
-};
-
-export default ProtectedRoutes;
+export default PrivateRoutes;
