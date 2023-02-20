@@ -5,10 +5,8 @@ import { useNavigate } from "react-router-dom";
 import auth from "../components/ProtectedRoutes";
 
 function Signin() {
-  const navigate = useNavigate();
   function handleSignInButtonClick() {
     signInWithSlack();
-    auth();
   }
 
   return (
