@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const useAuth = () => {
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem("provider_token");
   if (user) {
     return true;
   } else {
