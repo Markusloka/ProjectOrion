@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import supabase from "../database/supabase";
+import { useAuth } from "../database/supabase";
 
 const PrivateRoutes = () => {
-  const auth = supabase.auth.getUser();
+  const auth = useAuth();
   return auth ? <Outlet /> : <Navigate to="/Signin" />;
 };
 

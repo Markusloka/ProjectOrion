@@ -23,6 +23,10 @@ export async function signInWithSlack() {
     provider: "slack",
   });
 }
+
+export function useAuth() {
+  supabase.auth.getUser();
+}
 export async function signout() {
   const { error } = await supabase.auth.signOut();
 }
