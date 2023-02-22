@@ -22,10 +22,14 @@ export async function signInWithSlack() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "slack",
   });
+  if (error) {
+    console.log(error);
+  }
+  return { error, data };
 }
 
-export function useAuth() {
-  const { data } = supabase.auth.getSession({});
+export async function useAuth() {
+  const { data } = await supabase.auth.getSession({});
 }
 export async function signout() {
   const { error } = await supabase.auth.signOut();
