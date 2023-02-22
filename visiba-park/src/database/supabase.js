@@ -25,8 +25,9 @@ export async function signInWithSlack() {
 }
 
 export function useAuth() {
-  const user = supabase.auth.getUser();
-  return user;
+  const user = supabase.auth.getUser({
+    sessionStorage: "",
+  });
 }
 export async function signout() {
   const { error } = await supabase.auth.signOut();
