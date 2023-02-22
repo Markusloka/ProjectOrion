@@ -29,7 +29,7 @@ export async function signInWithSlack() {
 }
 
 export async function useAuth() {
-  const { data } = await supabase.auth.getSession({});
+  const { data } = await signInWithSlack();
 }
 export async function signout() {
   const { error } = await supabase.auth.signOut();
