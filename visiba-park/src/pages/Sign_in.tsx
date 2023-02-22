@@ -1,8 +1,6 @@
 import "../App.css";
 import slackLogo from "../assets/slack-new-logo.svg";
 import { signInWithSlack } from "../database/supabase.js";
-import { useNavigate } from "react-router-dom";
-import auth from "../components/ProtectedRoutes";
 
 function Signin() {
   function handleSignInButtonClick() {
