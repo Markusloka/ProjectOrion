@@ -1,39 +1,22 @@
 import "../App.css";
 import slackLogo from "../assets/slack-new-logo.svg";
-import { useAuth } from "../components/Auth";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import supabase from "../database/supabase";
 
 const SignIn = () => {
-  const auth = useAuth();
-  const navigate = useNavigate();
-  const [user, setUser] = useState("");
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    setUser("");
-
-    const signIn = await auth.login(user);
-
-    if (signIn.error) {
-      console.log(signIn.error.message, {
-        theme: "dark",
-        hideProgressBar: true,
-        autoClose: 3000,
-      });
-      return;
-    }
-    console.log("You are now logged in", {
-      theme: "dark",
-      hideProgressBar: true,
-      autoClose: 3000,
+  async function signInButton() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "slack",
     });
-    navigate("/Home");
-  };
+    if (error) {
+      console.log(error);
+    }
+
+    return { error, data };
+  }
 
   return (
     <div className="signIn">
-      <button className="signIn-button" onClick={handleSignIn}>
+      <button className="signIn-button" onClick={signInButton}>
         <p className="loginbutton">Log in with Slack</p>
         <img src={slackLogo} className="slacklogo" alt="slack logo" />
       </button>

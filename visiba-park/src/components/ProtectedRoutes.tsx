@@ -1,9 +1,9 @@
-import { useAuth } from "./Auth";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import supabase from "../database/supabase";
 
-const PrivateRoutes = ({ children }) => {
-  const auth = useAuth();
-  return auth.user ? children : <Navigate to={"/SignIn"} />;
+const PrivateRoutes = () => {
+  const auth = supabase.auth.getSession();
+  return auth ? <Outlet /> : <Navigate to={"/SignIn"} />;
 };
 
 export default PrivateRoutes;
