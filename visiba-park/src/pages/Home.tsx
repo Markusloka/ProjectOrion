@@ -6,6 +6,10 @@ import "../App.css";
 function Home() {
   return (
     <div className="Home">
+      <a href="/Signin">
+        <button className=" signInHome">Logga in</button>
+      </a>
+
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
