@@ -10,17 +10,17 @@ Reserving the Parking Slot<br>
 
 <h2>To reserve the parking slot, follow these steps:</h2>
 
-<p>Launch the app and check the current status of the parking slot.
-    If the slot is available, select the date you would like to reserve the parking slot for in the calendar view.
-    Click on the time slot you want to reserve and press the "booking" button.
+<p>Launch the app and check the current status of the parking slot.<br>
+    If the slot is available, select the date you would like to reserve the parking slot for in the calendar view.<br>
+    Click on the time slot you want to reserve and press the "booking" button.<br>
     Click the "Reserve" button to confirm your reservation. </p>
 
 <h2>Cancelling a Reservation</h2>
 
 <p>If you need to cancel your reservation, follow these steps:
 
-Launch the app and navigate to the calendar view.
-Click on the reservation you want to cancel.
+Launch the app and navigate to the calendar view.<br>
+Click on the reservation you want to cancel.<br>
 Click the "Cancel" button to cancel your reservation.</p>
 
 <h2>Technical Details</h2>
