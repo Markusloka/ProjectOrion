@@ -24,7 +24,8 @@ Click the "Cancel" button to cancel your reservation.</p>
 
 <h2>Technical Details</h2>
 
-<p>This app was built using React with Typescript for the front end and Supabase for the back end. The app utilizes Supabase's real-time database to ensure up-to-date information is displayed to the user. <br>The app is compatible with modern browsers.</p>
+<p>This app was built using React with Typescript for the front end and Supabase for the back end. <br>
+    The app utilizes Supabase's real-time database to ensure up-to-date information is displayed to the user. <br>The app is compatible with modern browsers.</p>
 
 <h2>Contributing</h2>
 
