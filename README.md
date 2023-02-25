@@ -4,13 +4,12 @@
 This is a simple parking app that manages a single parking slot. The app allows a user to reserve the parking slot for a specific time period and cancel their reservation if necessary. The app also displays the current status of the parking slot, whether it is available or occupied.
 Getting Started
 
-To use the app, simply download and install it on your device. Once installed, launch the app to begin.
-Usage
-Reserving the Parking Slot<br>
+To use the app, simply go to <a href="https://visibapark.vcare.pl/"> VisibaPark</a> and choose a date<br>
 
 <h2>To reserve the parking slot, follow these steps:</h2>
 
 <p>Launch the app and check the current status of the parking slot.<br>
+    Either sign in och sign up using Slack/Microsoft<br>
     If the slot is available, select the date you would like to reserve the parking slot for in the calendar view.<br>
     Click on the time slot you want to reserve and press the "booking" button.<br>
     Click the "Reserve" button to confirm your reservation. </p>
