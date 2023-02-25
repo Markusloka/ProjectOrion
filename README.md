@@ -1,8 +1,4 @@
 <h1>Developing parking solution for Visiba Örebro :parking:	</h1>
-<p>
-:desktop_computer: Backend Is powered by Supabase 
-:nail_care: Frontend Is React-Typescript which is powered by Vite<br>
-:spiral_calendar:	Public libary which power the calendar  <a href="https://www.npmjs.com/package/react-calendar">react calendar </a></p>
 
 <p>
 This is a simple parking app that manages a single parking slot. The app allows a user to reserve the parking slot for a specific time period and cancel their reservation if necessary. The app also displays the current status of the parking slot, whether it is available or occupied.
