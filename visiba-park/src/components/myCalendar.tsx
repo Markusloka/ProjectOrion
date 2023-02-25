@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import supabase from "../database/supabase.js";
+import { useEffect, useState } from "react";
+import supabase from "../database/supabase.jsx";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../App.css";
