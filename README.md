@@ -34,7 +34,3 @@ Click the "Cancel" button to cancel your reservation.</p>
 <h2>Contributing</h2>
 
 <p>If you would like to contribute to the development of this app, please submit a pull request with your changes.</p>
-License
-
-This app is licensed under the [insert license type here].
-This app is licensed under the [insert license type here].
