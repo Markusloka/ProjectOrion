@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import supabase from "../database/supabase.jsx";
+import supabase from "../database/supabase.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../App.css";
@@ -25,6 +25,20 @@ export default function Mycalendar() {
 
     setDate(date);
     fetchBookings();
+  }
+
+  async function isBooked(date: Date): Promise<null | string> {
+    const { data, error } = await supabase
+      .from("bookning")
+      .select("datum, Namn")
+      .eq("datum", date.toDateString())
+      .single();
+
+    if (error) {
+      return null;
+    }
+
+    return data.Namn;
   }
 
   function selectDate() {
