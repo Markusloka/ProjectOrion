@@ -19,7 +19,9 @@ export default function Mycalendar() {
   }
 
   async function createBooking() {
-    await supabase.from("bookning").insert([{ datum: selectDate, Namn: "xd" }]);
+    await supabase
+      .from("bookning")
+      .insert([{ datum: selectDate(), Namn: "xd" }]);
 
     setDate(date);
     fetchBookings();
