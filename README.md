@@ -5,7 +5,7 @@ This is a simple parking app that manages a single parking slot. The app allows 
 
 
 <h2>Getting Started</h2>
-
+Make sure to have updated your browser.
 To use the app, simply go to <a href="https://visibapark.vcare.pl/"> VisibaPark</a> and choose a date<br>
 
 <h2>To reserve the parking slot, follow these steps:</h2>
