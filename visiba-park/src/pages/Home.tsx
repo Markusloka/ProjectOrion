@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Mycalendar from "../components/myCalendar";
 import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
