@@ -13,6 +13,7 @@ function Home() {
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
+      <p>hej</p>
 
       <div className="card">
         <Mycalendar></Mycalendar>
