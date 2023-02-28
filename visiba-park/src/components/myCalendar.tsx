@@ -25,6 +25,7 @@ export default function Mycalendar() {
 
     setDate(date);
     fetchBookings();
+    isBooked;
   }
 
   async function isBooked(date: Date): Promise<null | string> {
