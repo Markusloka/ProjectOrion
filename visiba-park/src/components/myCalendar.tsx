@@ -33,13 +33,13 @@ export default function Mycalendar() {
       .from("bookning")
       .select("datum, Namn")
       .eq("datum", date.toDateString())
-      .single();
+      .maybeSingle();
 
     if (error) {
       return null;
     }
 
-    return data.Namn;
+    return data?.Namn;
   }
 
   function selectDate() {
