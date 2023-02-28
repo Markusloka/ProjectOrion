@@ -20,12 +20,12 @@ export default function Mycalendar() {
 
   async function createBooking() {
     if ((await isBooked(date)) === null) return;
-    // await supabase
-    //   .from("bookning")
-    //   .insert([{ datum: selectDate(), Namn: "test" }]);
+    await supabase
+      .from("bookning")
+      .insert([{ datum: selectDate(), Namn: "test" }]);
 
-    // setDate(date);
-    // fetchBookings();
+    setDate(date);
+    fetchBookings();
   }
 
   async function isBooked(date: Date): Promise<null | string> {
