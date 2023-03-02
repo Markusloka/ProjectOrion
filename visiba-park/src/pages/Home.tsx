@@ -5,8 +5,8 @@ import "../App.css";
 function Home() {
   return (
     <div className="Home">
-      <a href="/Signin">
-        <button className=" signInHome">Logga in</button>
+      <a className="singnInHome" href="/Signin">
+        <button className=" signInButton">Logga in</button>
       </a>
 
       <div className="logoTitle">

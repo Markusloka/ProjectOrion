@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+.Home {
+  display: flex;
+  flex-direction: column;
+}
 .logoTitle {
   display: flex;
 }
@@ -43,7 +47,16 @@
     transform: rotate(360deg);
   }
 }
-.signInHome {
+.singnInHome {
+  display: flex;
+  height: 4rem;
+  width: 10rem;
+  margin-left: 650px;
+  position: absolute;
+  margin-top: 80px;
+}
+
+.signInButton {
   display: flex;
   background-image: linear-gradient(#242424);
   border-radius: 8px;
