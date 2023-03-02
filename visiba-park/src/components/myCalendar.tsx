@@ -61,11 +61,8 @@ export default function Mycalendar() {
         maxDate={maxDate}
         minDate={new Date()}
       />
-      <p className="text-center">
-        <span className="bold">Selected Date:</span> {date.toDateString()}
-      </p>
-      <button className="button" onClick={createBooking}>
-        Boka parkering
+      <button className="buttonBook" onClick={createBooking}>
+        Boka
       </button>
     </div>
   );
