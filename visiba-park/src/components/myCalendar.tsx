@@ -19,26 +19,32 @@ export default function Mycalendar() {
   }
 
   async function createBooking() {
+    const help = await isBooked(date);
+    console.log(help);
+    if (help) return;
+
     await supabase
       .from("bookning")
-      .insert([{ datum: selectDate(), Namn: "xd" }]);
+      .insert([{ datum: selectDate(), Namn: "lol" }]);
 
     setDate(date);
     fetchBookings();
   }
 
-  async function isBooked(date: Date): Promise<null | string> {
-    const { data, error } = await supabase
+  async function isBooked(date: Date): Promise<boolean> {
+    const {
+      data: booking,
+      error,
+      status,
+    } = await supabase
       .from("bookning")
       .select("datum, Namn")
       .eq("datum", date.toDateString())
-      .single();
+      .maybeSingle();
 
-    if (error) {
-      return null;
-    }
+    if (error != null) return false;
 
-    return data.Namn;
+    return status === 200;
   }
 
   function selectDate() {
@@ -55,11 +61,8 @@ export default function Mycalendar() {
         maxDate={maxDate}
         minDate={new Date()}
       />
-      <p className="text-center">
-        <span className="bold">Selected Date:</span> {date.toDateString()}
-      </p>
-      <button className="button" onClick={createBooking}>
-        Boka parkering
+      <button className="buttonBook" onClick={createBooking}>
+        Boka
       </button>
     </div>
   );
