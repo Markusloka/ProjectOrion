@@ -3,6 +3,7 @@ import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 import supabase from "../database/supabase";
 
+//This logout button now works!
 function LogoutBtn() {
   async function handleSignout() {
     await supabase.auth.signOut();
@@ -23,7 +24,7 @@ function LoginBtn() {
     </a>
   );
 }
-
+//Need to useeffect something because we need to change button from logout to login
 function AuthBtn() {
   const isLoggedIn = supabase.auth.getUser();
   if (isLoggedIn) {
