@@ -2,6 +2,7 @@ import Mycalendar from "../components/myCalendar";
 import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 import supabase from "../database/supabase";
+import { AsyncLocalStorage } from "async_hooks";
 
 //This logout button now works!
 function LogoutBtn() {
@@ -26,7 +27,7 @@ function LoginBtn() {
 }
 //Need to useeffect something because we need to change button from logout to login
 function AuthBtn() {
-  const isLoggedIn = supabase.auth.getUser();
+  const isLoggedIn = localStorage.length > 0;
   if (isLoggedIn) {
     console.log(isLoggedIn);
     return <LogoutBtn />;
