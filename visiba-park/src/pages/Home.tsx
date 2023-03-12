@@ -3,11 +3,13 @@ import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 import supabase from "../database/supabase";
 import { AsyncLocalStorage } from "async_hooks";
+import { useUser } from "../UserUser";
 
 //This logout button now works!
 function LogoutBtn() {
   async function handleSignout() {
     await supabase.auth.signOut();
+    window.location.reload();
   }
   return (
     <div className="authentication">
@@ -27,8 +29,8 @@ function LoginBtn() {
 }
 //Need to useeffect something because we need to change button from logout to login
 function AuthBtn() {
-  const isLoggedIn = localStorage.length > 0;
-  if (isLoggedIn) {
+  const isLoggedIn = useUser;
+  if (isLoggedIn()) {
     console.log(isLoggedIn);
     return <LogoutBtn />;
   }
@@ -39,9 +41,6 @@ function AuthBtn() {
 function Home() {
   return (
     <div className="Home">
-      {/* <a className="singngInHome" href="/Signin">
-        <button className=" signInButton">Logga in</button>
-      </a> */}
       <AuthBtn />
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
