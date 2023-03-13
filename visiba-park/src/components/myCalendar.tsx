@@ -33,13 +33,13 @@ export default function Mycalendar() {
 
   async function isBooked(date: Date): Promise<boolean> {
     const {
-      data: booking,
+      data: bookning,
       error,
       status,
     } = await supabase
       .from("bookning")
       .select("datum, Namn")
-      .eq("datum", date.toDateString())
+      .eq("datum", date.toISOString())
       .maybeSingle();
 
     if (error != null) return false;
@@ -48,7 +48,7 @@ export default function Mycalendar() {
   }
 
   function selectDate() {
-    const pickedDate = date.toDateString();
+    const pickedDate = date.toISOString();
     console.log(pickedDate);
     return pickedDate;
   }

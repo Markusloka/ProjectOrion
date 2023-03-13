@@ -2,8 +2,7 @@ import Mycalendar from "../components/myCalendar";
 import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 import supabase from "../database/supabase";
-import { AsyncLocalStorage } from "async_hooks";
-import { useUser } from "../UserUser";
+import { useUser } from "../components/UserUser";
 
 //This logout button now works!
 function LogoutBtn() {
