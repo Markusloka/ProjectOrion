@@ -15,36 +15,31 @@ export default function Mycalendar() {
 
   async function fetchBookings() {
     const { data } = await supabase.from("bookning").select();
-    setDate(date);
+    // TODO: Populate calander with dates
   }
 
   async function createBooking() {
-    const help = await isBooked(date);
-    console.log(help);
-    if (help) return;
+    if (await isBooked(date)) return; // TODO popup, show is already booked
 
     await supabase
       .from("bookning")
-      .insert([{ datum: selectDate(), Namn: "lol" }]);
+      .insert([{ datum: date.toLocaleDateString(), Namn: "lol" }]);
 
-    setDate(date);
-    fetchBookings();
+    await fetchBookings();
   }
 
   async function isBooked(date: Date): Promise<boolean> {
     const {
-      data: bookning,
+      data: booking,
       error,
       status,
     } = await supabase
       .from("bookning")
-      .select("datum, Namn")
-      .eq("datum", date.toISOString())
+      .select("datum")
+      .eq("datum", date.toLocaleDateString())
       .maybeSingle();
 
-    if (error != null) return false;
-
-    return status === 200;
+    return booking !== null;
   }
 
   function selectDate() {
