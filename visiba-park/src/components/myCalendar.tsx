@@ -14,6 +14,7 @@ export default function Mycalendar() {
   }, []);
 
   async function fetchBookings() {
+    // TODO: Update query to only fetch today - maxDate
     const { data } = await supabase.from("bookning").select();
     // TODO: Populate calander with dates
   }
