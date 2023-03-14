@@ -6,8 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
 import { useUser } from "./UserUser";
 import { toast } from "react-toastify";
+import { User } from "@supabase/supabase-js";
 
-export default function Mycalendar() {
+interface Props {
+  user: User | null;
+}
+
+export default function Mycalendar({ user }: Props) {
   const [date, setDate] = useState(new Date());
   const today = new Date();
   const maxDate = new Date(today.setMonth(today.getMonth() + 1));
@@ -23,6 +28,8 @@ export default function Mycalendar() {
   }
 
   async function createBooking() {
+    if (user === null) return;
+
     if (await isBooked(date)) {
       toast.error("This Date is already booked!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -35,7 +42,7 @@ export default function Mycalendar() {
 
     await supabase
       .from("bookning")
-      .insert([{ datum: date.toLocaleDateString(), Namn: { useUser } }]);
+      .insert([{ datum: date.toLocaleDateString(), Namn: user.id }]);
     toast.success("Booking successful!", {
       position: toast.POSITION.TOP_RIGHT,
       theme: "dark",
@@ -58,12 +65,6 @@ export default function Mycalendar() {
 
     return booking !== null;
   }
-
-  // function selectDate() {
-  //   const pickedDate = date.toISOString();
-  //   console.log(pickedDate);
-  //   return pickedDate;
-  // }
 
   return (
     <div className="styleCalendar">

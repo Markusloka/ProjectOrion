@@ -3,41 +3,41 @@ import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 import supabase from "../database/supabase";
 import { useUser } from "../components/UserUser";
+import { User } from "@supabase/supabase-js";
 
+interface Props {
+  user: User | null;
+  logout: () => Promise<void>;
+}
 //This logout button now works!
-function LogoutBtn() {
-  async function handleSignout() {
-    await supabase.auth.signOut();
-    window.location.reload();
-  }
-  return (
-    <div className="authentication">
-      <button className="signInButton" onClick={handleSignout}>
-        Logout
-      </button>
-    </div>
-  );
-}
 
-function LoginBtn() {
-  return (
-    <a href="/Signin">
-      <button className="signInButton">Login</button>
-    </a>
-  );
-}
-//Need to useeffect something because we need to change button from logout to login
-function AuthBtn() {
-  const isLoggedIn = useUser;
-  if (isLoggedIn()) {
-    console.log(isLoggedIn);
-    return <LogoutBtn />;
+function Home({ user, logout }: Props) {
+  function LogoutBtn() {
+    return (
+      <div className="authentication">
+        <button className="signInButton" onClick={logout}>
+          Logout
+        </button>
+      </div>
+    );
   }
-  console.log(isLoggedIn);
-  return <LoginBtn />;
-}
 
-function Home() {
+  function LoginBtn() {
+    return (
+      <a href="/Signin">
+        <button className="signInButton">Login</button>
+      </a>
+    );
+  }
+
+  //Need to useeffect something because we need to change button from logout to login
+  function AuthBtn() {
+    if (user) {
+      return <LogoutBtn />;
+    }
+    return <LoginBtn />;
+  }
+
   return (
     <div className="Home">
       <AuthBtn />
@@ -45,7 +45,7 @@ function Home() {
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
       <div className="card">
-        <Mycalendar></Mycalendar>
+        <Mycalendar user={user} />
       </div>
     </div>
   );
