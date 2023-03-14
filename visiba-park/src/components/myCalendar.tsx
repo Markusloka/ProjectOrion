@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import supabase from "../database/supabase.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
+import { useUser } from "./UserUser";
+import { toast } from "react-toastify";
 
 export default function Mycalendar() {
   const [date, setDate] = useState(new Date());
@@ -20,12 +23,25 @@ export default function Mycalendar() {
   }
 
   async function createBooking() {
-    if (await isBooked(date)) return; // TODO popup, show is already booked
+    if (await isBooked(date)) {
+      toast.error("This Date is already booked!", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+        hideProgressBar: true,
+        autoClose: 3000,
+      });
+      return; // TODO popup, show is already booked
+    }
 
     await supabase
       .from("bookning")
-      .insert([{ datum: date.toLocaleDateString(), Namn: "lol" }]);
-
+      .insert([{ datum: date.toLocaleDateString(), Namn: { useUser } }]);
+    toast.success("Booking successful!", {
+      position: toast.POSITION.TOP_RIGHT,
+      theme: "dark",
+      hideProgressBar: true,
+      autoClose: 3000,
+    });
     await fetchBookings();
   }
 
@@ -43,11 +59,11 @@ export default function Mycalendar() {
     return booking !== null;
   }
 
-  function selectDate() {
-    const pickedDate = date.toISOString();
-    console.log(pickedDate);
-    return pickedDate;
-  }
+  // function selectDate() {
+  //   const pickedDate = date.toISOString();
+  //   console.log(pickedDate);
+  //   return pickedDate;
+  // }
 
   return (
     <div className="styleCalendar">
