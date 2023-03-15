@@ -240,9 +240,13 @@ abbr[title] {
   text-decoration: none;
 }
 
-/* .react-calendar__month-view__days__day--weekend {
-  color: #d10000;
- } */
+.react-calendar__month-view__weekdays {
+  color: #ffffff;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #820000;
+}
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
