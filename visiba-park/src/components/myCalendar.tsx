@@ -28,7 +28,13 @@ export default function Mycalendar({ user }: Props) {
   }
 
   async function createBooking() {
-    if (user === null) return;
+    if (user === null)
+      return toast.error("You need to log in to book", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+        hideProgressBar: true,
+        autoClose: 3000,
+      });
 
     if (await isBooked(date)) {
       toast.error("This Date is already booked!", {
