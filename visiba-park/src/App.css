@@ -55,7 +55,16 @@
   position: absolute;
   margin-top: 80px;
 }
-
+.user {
+  display: flex;
+  font-size: large;
+  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  width: 13rem;
+}
 .signInButton {
   display: flex;
   background-image: linear-gradient(#242424);

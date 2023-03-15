@@ -22,6 +22,22 @@ function Home({ user, logout }: Props) {
     );
   }
 
+  const loggedInUser = user;
+
+  if (loggedInUser) {
+    const { user_metadata } = loggedInUser;
+    if (user_metadata) {
+      const { full_name } = user_metadata;
+
+      if (full_name) {
+        const userFullNameDiv = document.getElementById("user-fullname");
+        if (userFullNameDiv) {
+          userFullNameDiv.textContent = full_name;
+        }
+      }
+    }
+  }
+
   function LoginBtn() {
     return (
       <a href="/Signin">
@@ -44,6 +60,7 @@ function Home({ user, logout }: Props) {
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
+      <div id="user-fullname" className="user"></div>
       <div className="card">
         <Mycalendar user={user} />
       </div>
