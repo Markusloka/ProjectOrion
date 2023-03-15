@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
 import { toast } from "react-toastify";
 import { User } from "@supabase/supabase-js";
-import { userInfo } from "os";
 
 interface Props {
   user: User | null;
@@ -16,15 +15,30 @@ export default function Mycalendar({ user }: Props) {
   const [date, setDate] = useState(new Date());
   const today = new Date();
   const maxDate = new Date(today.setMonth(today.getMonth() + 1));
+  const [bookedDates, setBookedDates] = useState<Date[]>([]);
 
   useEffect(() => {
     fetchBookings();
   }, []);
 
   async function fetchBookings() {
-    // TODO: Update query to only fetch today - maxDate
-    const { data } = await supabase.from("bookning").select();
-    // TODO: Populate calander with dates
+    const { data, error } = await supabase
+      .from("bookning")
+      .select("datum")
+      .gte("datum", new Date().toLocaleDateString())
+      .order("datum");
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    if (data) {
+      const dates = data.map((booking: { datum: string }) => {
+        return new Date(booking.datum);
+      });
+      setBookedDates(dates);
+    }
   }
 
   async function createBooking() {
@@ -43,7 +57,7 @@ export default function Mycalendar({ user }: Props) {
         hideProgressBar: true,
         autoClose: 3000,
       });
-      return; // TODO popup, show is already booked
+      return; // TODO popup, show is already booked [DONE]
     }
 
     await supabase
@@ -55,7 +69,6 @@ export default function Mycalendar({ user }: Props) {
       hideProgressBar: true,
       autoClose: 3000,
     });
-    await fetchBookings();
   }
 
   async function isBooked(date: Date): Promise<boolean> {
@@ -69,7 +82,19 @@ export default function Mycalendar({ user }: Props) {
       .eq("datum", date.toLocaleDateString())
       .maybeSingle();
 
+    if (error) {
+      console.error(error);
+      return false;
+    }
+
     return booking !== null;
+  }
+
+  function tileDisabled({ date }: { date: Date }): boolean {
+    return bookedDates.some(
+      (bookedDate) =>
+        bookedDate.toLocaleDateString() === date.toLocaleDateString()
+    );
   }
 
   return (
@@ -79,6 +104,7 @@ export default function Mycalendar({ user }: Props) {
         value={date}
         maxDate={maxDate}
         minDate={new Date()}
+        tileDisabled={tileDisabled}
       />
       <button className="buttonBook" onClick={createBooking}>
         Boka
