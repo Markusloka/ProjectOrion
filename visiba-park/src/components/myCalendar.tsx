@@ -4,9 +4,9 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
-import { useUser } from "./UserUser";
 import { toast } from "react-toastify";
 import { User } from "@supabase/supabase-js";
+import { userInfo } from "os";
 
 interface Props {
   user: User | null;
@@ -48,7 +48,7 @@ export default function Mycalendar({ user }: Props) {
 
     await supabase
       .from("bookning")
-      .insert([{ datum: date.toLocaleDateString(), Namn: user.id }]);
+      .insert([{ datum: date.toLocaleDateString(), Namn: user.email }]);
     toast.success("Booking successful!", {
       position: toast.POSITION.TOP_RIGHT,
       theme: "dark",
