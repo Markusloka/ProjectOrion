@@ -22,8 +22,23 @@ function Home({ user, logout }: Props) {
     );
   }
 
-  const loggedInUser = user;
+  const loggedInUserProfile = user;
+  if (loggedInUserProfile) {
+    const { user_metadata } = loggedInUserProfile;
+    if (user_metadata) {
+      const { avatar_url } = user_metadata;
 
+      if (avatar_url) {
+        const userProfileImage = document.getElementById("user-profile-image");
+        if (userProfileImage) {
+          userProfileImage.setAttribute("src", avatar_url);
+          userProfileImage.setAttribute("alt", "User Profile Image");
+        }
+      }
+    }
+  }
+
+  const loggedInUser = user;
   if (loggedInUser) {
     const { user_metadata } = loggedInUser;
     if (user_metadata) {
@@ -60,7 +75,14 @@ function Home({ user, logout }: Props) {
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
-      <div id="user-fullname" className="user"></div>
+      <div className="userElements">
+        <img
+          aria-label="profile picture"
+          id="user-profile-image"
+          className="profileImage"
+        ></img>
+        <div id="user-fullname" className="user"></div>
+      </div>
       <div className="card">
         <Mycalendar user={user} />
       </div>

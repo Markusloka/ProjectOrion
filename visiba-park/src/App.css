@@ -55,6 +55,24 @@
   position: absolute;
   margin-top: 80px;
 }
+.userElements {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  margin-left: 650px;
+  margin-bottom: 40px;
+  position: absolute;
+}
+.profileImage {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  will-change: filter;
+}
+.profileImage:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
 .user {
   display: flex;
   font-size: large;
@@ -64,6 +82,8 @@
   font-size: 24px;
   font-weight: 500;
   width: 13rem;
+
+  margin-bottom: 20px;
 }
 .signInButton {
   display: flex;
