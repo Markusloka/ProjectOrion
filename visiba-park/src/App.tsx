@@ -1,6 +1,5 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useUser } from "./components/UserUser";
-import supabase from "./database/supabase";
 import Home from "./pages/Home";
 import Signin from "./pages/Sign_in";
 
