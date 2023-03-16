@@ -67,7 +67,9 @@
   width: 175px;
   height: 175px;
   border-radius: 50%;
+  border-style: groove;
   will-change: filter;
+  border-color: #635f5f;
 }
 .profileImage:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
