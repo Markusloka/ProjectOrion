@@ -25,7 +25,7 @@ export default function Mycalendar({ user }: Props) {
     const { data, error } = await supabase
       .from("bookning")
       .select("datum")
-      .gte("datum", new Date().toLocaleDateString())
+      .gte("datum", new Date().toDateString())
       .order("datum");
 
     if (error) {
@@ -62,7 +62,7 @@ export default function Mycalendar({ user }: Props) {
 
     await supabase
       .from("bookning")
-      .insert([{ datum: date.toLocaleDateString(), Namn: user.email }]);
+      .insert([{ datum: date.toDateString(), Namn: user.email }]);
     toast.success("Booking successful!", {
       position: toast.POSITION.TOP_RIGHT,
       theme: "dark",
@@ -79,7 +79,7 @@ export default function Mycalendar({ user }: Props) {
     } = await supabase
       .from("bookning")
       .select("datum")
-      .eq("datum", date.toLocaleDateString())
+      .eq("datum", date.toDateString())
       .maybeSingle();
 
     if (error) {
@@ -92,8 +92,7 @@ export default function Mycalendar({ user }: Props) {
 
   function tileDisabled({ date }: { date: Date }): boolean {
     return bookedDates.some(
-      (bookedDate) =>
-        bookedDate.toLocaleDateString() === date.toLocaleDateString()
+      (bookedDate) => bookedDate.toDateString() === date.toDateString()
     );
   }
 
