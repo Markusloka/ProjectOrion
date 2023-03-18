@@ -1,5 +1,6 @@
 import "../App.css";
 import { User } from "@supabase/supabase-js";
+import { userInfo } from "os";
 
 interface Props {
   user: User | null;
@@ -37,15 +38,19 @@ function UserProfile({ user }: Props) {
     }
   }
 
-  return (
-    <div className="userElements">
-      <img
-        aria-label="profile picture"
-        id="user-profile-image"
-        className="profileImage"
-      ></img>
-      <div id="user-fullname" className="user"></div>
-    </div>
-  );
+  if (user) {
+    return (
+      <div className="userElements">
+        <img
+          aria-label="profile picture"
+          id="user-profile-image"
+          className="profileImage"
+        ></img>
+        <div id="user-fullname" className="user"></div>
+      </div>
+    );
+  }
+  return null;
 }
+
 export default UserProfile;
