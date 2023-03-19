@@ -5,7 +5,9 @@ interface Props {
   user: User | null;
 }
 function UserProfile({ user }: Props) {
+  if (!user) return null;
   const loggedInUserProfile = user;
+
   if (loggedInUserProfile) {
     const { user_metadata } = loggedInUserProfile;
     if (user_metadata) {
@@ -35,7 +37,7 @@ function UserProfile({ user }: Props) {
       }
     }
   }
-  if (user != null) {
+  {
     return (
       <div className="userElements">
         <img
@@ -47,7 +49,6 @@ function UserProfile({ user }: Props) {
       </div>
     );
   }
-  return null;
 }
 
 export default UserProfile;
