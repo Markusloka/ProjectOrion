@@ -49,9 +49,8 @@ function UserProfile({ user }: Props) {
       </div>
     );
   }
-  if ((user = null)) {
-    return null;
-  }
+  user = null;
+  return null;
 }
 
 export default UserProfile;
