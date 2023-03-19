@@ -48,8 +48,6 @@ function UserProfile({ user }: Props) {
         <div id="user-fullname" className="user"></div>
       </div>
     );
-  } else {
-    return null;
   }
 }
 
