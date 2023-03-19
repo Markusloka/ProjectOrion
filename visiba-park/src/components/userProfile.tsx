@@ -35,7 +35,7 @@ function UserProfile({ user }: Props) {
       }
     }
   }
-  if (user) {
+  if (user != null) {
     return (
       <div className="userElements">
         <img
