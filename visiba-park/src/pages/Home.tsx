@@ -29,17 +29,9 @@ function Home({ user, logout }: Props) {
     );
   }
 
-  //Need to useeffect something because we need to change button from logout to login
-  function AuthBtn() {
-    if (user) {
-      return <LogoutBtn />;
-    }
-    return <LoginBtn />;
-  }
-
   return (
     <div className="Home">
-      <AuthBtn />
+      {user ? <LogoutBtn /> : <LoginBtn />}
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
