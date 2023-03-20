@@ -43,7 +43,7 @@ function Home({ user, logout }: Props) {
       <div className="logoTitle">
         <img src={visibaLogo} className="logo react" alt="React logo" />
       </div>
-      <UserProfile user={user} />
+      {user && <UserProfile user={user} />}
       <div className="card">
         <Mycalendar user={user} />
       </div>
