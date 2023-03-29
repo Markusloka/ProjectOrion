@@ -23,7 +23,7 @@ function Home({ user, logout }: Props) {
 
   function LoginBtn() {
     return (
-      <a href="/Signin">
+      <a href="/Signin" className="signInButton">
         <button className="signInButton">Login</button>
       </a>
     );

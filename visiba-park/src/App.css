@@ -90,10 +90,6 @@
 .signInButton {
   display: flex;
   background-image: linear-gradient(#242424);
-  border-radius: 8px;
-  border-style: ridge;
-  box-sizing: border-box;
-  color: #ffffff;
   cursor: pointer;
   flex-shrink: 0;
   font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
@@ -108,6 +104,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  width: 8rem;
 }
 
 .buttonBook {
