@@ -32,6 +32,18 @@
   align-self: center;
 }
 
+.react-calendar__month-view__days__day {
+  position: relative;
+}
+
+.tile-content {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .slacklogo {
   display: flex;
   height: 1.5em;

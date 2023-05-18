@@ -1,11 +1,4 @@
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import supabase from "../database/supabase.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -13,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../App.css";
 import { toast } from "react-toastify";
 import { User } from "@supabase/supabase-js";
-import * as RadixHoverCard from "@radix-ui/react-hover-card";
+import HoverCard from "./hoverCard.js";
 
 interface Props {
   user: User | null;
@@ -113,13 +106,11 @@ export default function Mycalendar({ user }: Props) {
         minDate={new Date()}
         tileDisabled={tileDisabled}
         tileContent={({ date, view }) => {
-          return view === "month" && date.getDay() === 0 ? (
-            <p
-              onMouseEnter={() => {
-                console.log("hi");
-              }}
-            ></p>
-          ) : null;
+          return (
+            <div className="tile-content">
+              <HoverCard></HoverCard>
+            </div>
+          );
         }}
       />
 
