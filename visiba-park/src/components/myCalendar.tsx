@@ -105,7 +105,7 @@ export default function Mycalendar({ user }: Props) {
         maxDate={maxDate}
         minDate={new Date()}
         tileDisabled={tileDisabled}
-        tileContent={({ date, view }) => {
+        tileContent={({}) => {
           return (
             <div className="tile-content">
               <HoverCard></HoverCard>
