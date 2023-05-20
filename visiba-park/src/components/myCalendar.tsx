@@ -10,6 +10,7 @@ import HoverCard from "./hoverCard.js";
 
 interface Props {
   user: User | null;
+  bookad: string | null;
 }
 
 export default function Mycalendar({ user }: Props) {
@@ -92,6 +93,7 @@ export default function Mycalendar({ user }: Props) {
   }
 
   function tileDisabled({ date }: { date: Date }): boolean {
+    console.log(bookedDates);
     return bookedDates.some(
       (bookedDate) => bookedDate.toDateString() === date.toDateString()
     );
@@ -105,10 +107,11 @@ export default function Mycalendar({ user }: Props) {
         maxDate={maxDate}
         minDate={new Date()}
         tileDisabled={tileDisabled}
-        tileContent={({}) => {
+        tileContent={({ date }) => {
+          console.log(date);
           return (
             <div className="tile-content">
-              <HoverCard></HoverCard>
+              <HoverCard tiledisabled={tileDisabled} date={date}></HoverCard>
             </div>
           );
         }}
