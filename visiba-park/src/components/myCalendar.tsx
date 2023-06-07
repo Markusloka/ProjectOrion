@@ -10,8 +10,6 @@ import HoverCard from "./hoverCard.js";
 
 interface Props {
   user: User | null;
-  bookad: string | null;
-  userBooked: (args: { date: Date }) => boolean;
 }
 
 export default function Mycalendar({ user }: Props) {
@@ -100,10 +98,10 @@ export default function Mycalendar({ user }: Props) {
     );
   }
 
-  async function userBooked({ date }: { date: Date }): Promise<boolean> {
+  /*   async function userBooked({ date }: { date: Date }): Promise<boolean> {
     const { data: booking, error } = await supabase
       .from("bookning")
-      .select("Namn")
+      .select("datum")
       .eq("datum", date.toDateString())
       .maybeSingle();
 
@@ -112,8 +110,8 @@ export default function Mycalendar({ user }: Props) {
       return false;
     }
 
-    return booking !== null;
-  }
+    return console.log(booking) !== null;
+  } */
 
   return (
     <div className="styleCalendar">
@@ -130,7 +128,8 @@ export default function Mycalendar({ user }: Props) {
               <HoverCard
                 tiledisabled={tileDisabled}
                 date={date}
-                userBooked={userBooked}
+                /*                 userBooked={userBooked}
+                 */
               ></HoverCard>
             </div>
           );

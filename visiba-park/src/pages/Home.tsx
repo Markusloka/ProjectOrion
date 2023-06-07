@@ -3,6 +3,7 @@ import visibaLogo from "../assets/visiba_logo.svg";
 import "../App.css";
 import UserProfile from "../components/userProfile";
 import { User } from "@supabase/supabase-js";
+import ScrollAreaDemo from "../components/scrollArea";
 
 interface Props {
   user: User | null;
@@ -38,6 +39,7 @@ function Home({ user, logout }: Props) {
       {user && <UserProfile user={user} />}
       <div className="card">
         <Mycalendar user={user} />
+        <ScrollAreaDemo></ScrollAreaDemo>
       </div>
     </div>
   );
