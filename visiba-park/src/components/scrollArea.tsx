@@ -7,9 +7,12 @@ const TAGS = Array.from({ length: 50 }).map(
 
 const ScrollAreaDemo = () => (
   <ScrollArea.Root className="ScrollAreaRoot">
+    <div className="bookingstitle" style={{ padding: "15px" }}>
+      Your bookings
+    </div>
     <ScrollArea.Viewport className="ScrollAreaViewport">
       <div style={{ padding: "15px 20px" }}>
-        <div className="Text">Your bookings</div>
+        <div className="Text"></div>
         {TAGS.map((tag) => (
           <div className="Tag" key={tag}>
             {tag}
