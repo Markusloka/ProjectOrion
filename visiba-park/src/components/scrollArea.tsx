@@ -9,7 +9,7 @@ const ScrollAreaDemo = () => (
   <ScrollArea.Root className="ScrollAreaRoot">
     <ScrollArea.Viewport className="ScrollAreaViewport">
       <div style={{ padding: "15px 20px" }}>
-        <div className="Text">Tags</div>
+        <div className="Text">Your bookings</div>
         {TAGS.map((tag) => (
           <div className="Tag" key={tag}>
             {tag}
