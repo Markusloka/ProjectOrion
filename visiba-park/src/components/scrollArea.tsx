@@ -8,7 +8,7 @@ const TAGS = Array.from({ length: 50 }).map(
 const ScrollAreaDemo = () => (
   <ScrollArea.Root className="ScrollAreaRoot">
     <div className="bookingstitle" style={{ padding: "15px" }}>
-      Your bookings
+      My bookings
     </div>
     <ScrollArea.Viewport className="ScrollAreaViewport">
       <div style={{ padding: "15px 20px" }}>
