@@ -64,7 +64,9 @@ export default function Mycalendar({ user }: Props) {
 
     await supabase
       .from("bookning")
-      .insert([{ datum: date.toDateString(), Namn: user.email }]);
+      .insert([
+        { datum: date.toDateString(), Namn: user.user_metadata.full_name },
+      ]);
     toast.success("Booking successful!", {
       position: toast.POSITION.TOP_RIGHT,
       theme: "dark",
