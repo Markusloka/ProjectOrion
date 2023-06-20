@@ -16,16 +16,17 @@ export default function Mycalendar({ user }: Props) {
   const [date, setDate] = useState(new Date());
   const today = new Date();
   const maxDate = new Date(today.setMonth(today.getMonth() + 1));
-  const [bookedDates, setBookedDates] = useState<Date[]>([]);
+  const [bookedDates, setBookedDates] = useState<
+    { date: Date; namn: string }[]
+  >([]);
 
   useEffect(() => {
     fetchBookings();
   }, []);
-
   async function fetchBookings() {
     const { data, error } = await supabase
       .from("bookning")
-      .select("datum")
+      .select("datum, Namn")
       .gte("datum", new Date().toDateString())
       .order("datum");
 
@@ -35,15 +36,15 @@ export default function Mycalendar({ user }: Props) {
     }
 
     if (data) {
-      const dates = data.map((booking: { datum: string }) => {
-        return new Date(booking.datum);
+      const dates = data.map((booking: { datum: string; Namn: string }) => {
+        return { date: new Date(booking.datum), namn: booking.Namn };
       });
       setBookedDates(dates);
     }
   }
 
   async function createBooking() {
-    if (user === null)
+    if (!user)
       return toast.error("You need to log in to book", {
         position: toast.POSITION.TOP_RIGHT,
         theme: "dark",
@@ -92,26 +93,19 @@ export default function Mycalendar({ user }: Props) {
   }
 
   function tileDisabled({ date }: { date: Date }): boolean {
-    console.log(bookedDates);
     return bookedDates.some(
-      (bookedDate) => bookedDate.toDateString() === date.toDateString()
+      (bookedDate) => bookedDate.date.toDateString() === date.toDateString()
     );
   }
 
-  /*   async function userBooked({ date }: { date: Date }): Promise<boolean> {
-    const { data: booking, error } = await supabase
-      .from("bookning")
-      .select("datum")
-      .eq("datum", date.toDateString())
-      .maybeSingle();
+  function getName(date: Date): string {
+    console.log(bookedDates);
 
-    if (error) {
-      console.error(error);
-      return false;
-    }
-
-    return console.log(booking) !== null;
-  } */
+    return (
+      bookedDates.find((x) => x.date.toDateString() === date.toDateString())
+        ?.namn ?? ""
+    );
+  }
 
   return (
     <div className="styleCalendar">
@@ -121,15 +115,14 @@ export default function Mycalendar({ user }: Props) {
         maxDate={maxDate}
         minDate={new Date()}
         tileDisabled={tileDisabled}
-        tileContent={({ date }) => {
-          console.log(date);
+        tileContent={(date) => {
+          console.log(date.date);
           return (
             <div className="tile-content">
               <HoverCard
                 tiledisabled={tileDisabled}
-                date={date}
-                /*                 userBooked={userBooked}
-                 */
+                date={date.date}
+                namn={getName(date.date)}
               ></HoverCard>
             </div>
           );
