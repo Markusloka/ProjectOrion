@@ -38,10 +38,6 @@
   align-self: center;
 }
 
-.react-calendar__month-view__days__day {
-  position: relative;
-}
-
 .tile-content {
   height: 100%;
   left: 0;
@@ -245,6 +241,11 @@
   }
 }
 
+/* Calendar CSS */
+
+.react-calendar__month-view__days__day {
+  position: relative;
+}
 .styleCalendar {
   display: flex;
   align-self: center;
@@ -338,6 +339,10 @@ abbr[title] {
   background-color: #242424;
 }
 
+/* HoverCard CSS */
+.a {
+  all: unset;
+}
 .HoverCardContent {
   border-radius: 6px;
   padding: 20px;
@@ -396,6 +401,8 @@ abbr[title] {
 .Text.bold {
   font-weight: 500;
 }
+
+/* Scroll Area CSS */
 
 .ScrollAreaRoot {
   width: 300px;

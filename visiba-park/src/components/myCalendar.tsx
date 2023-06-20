@@ -59,7 +59,7 @@ export default function Mycalendar({ user }: Props) {
         hideProgressBar: true,
         autoClose: 3000,
       });
-      return; // TODO popup, show is already booked [DONE]
+      return;
     }
 
     await supabase
