@@ -12,9 +12,20 @@ interface Props {
   namn: string; // Add the 'namn' property to Props
 }
 
-function deleteBooking() {
-  console.log("din mamma");
-}
+const deleteBooking = async (dateToDelete: Date) => {
+  try {
+    // Find the booking with the specified date and delete it
+    await supabase
+      .from("bookning")
+      .delete()
+      .eq("datum", dateToDelete.toISOString());
+
+    // After successfully deleting the booking, you can update the state or perform any other necessary actions
+    // For example, you can fetch the updated list of bookings after deletion.
+  } catch (error) {
+    console.error("Error deleting booking:", error);
+  }
+};
 
 const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
   const [mybookings, setMybookings] = useState<{ date: Date; namn: string }[]>(
@@ -53,7 +64,7 @@ const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
       <ScrollArea.Viewport className="ScrollAreaViewport">
         {user ? ( // Check if user is logged in
           <div className="bookingstitle">
-            My bookings
+            <h1>My bookings</h1>
             <div>
               <div className="Text"></div>
               {mybookings.map((mybooking, index) => (
@@ -63,7 +74,10 @@ const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
                     <h2 className="bookingDate">
                       {mybooking.date.toLocaleDateString()}
                     </h2>
-                    <button className="deleteBooking">
+                    <button
+                      className="deleteBooking"
+                      onClick={() => deleteBooking(mybooking.date)}
+                    >
                       <img
                         className="deleteIcon"
                         src={DeleteIcon}
