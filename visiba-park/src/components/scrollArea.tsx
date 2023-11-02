@@ -62,10 +62,11 @@ const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
 
   return (
     <ScrollArea.Root className="ScrollAreaRoot">
+      <h2>My bookings</h2>
+
       <ScrollArea.Viewport className="ScrollAreaViewport">
         {user ? (
           <div className="bookingstitle">
-            <h2>My bookings</h2>
             <div>
               <div className="Text"></div>
               {mybookings.map((mybooking, index) => (

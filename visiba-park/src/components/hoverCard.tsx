@@ -23,7 +23,7 @@ export default ({ date, namn, tiledisabled }: Props) => {
               <div
                 style={{ display: "flex", flexDirection: "column", gap: 15 }}
               >
-                <div>{x ? "Bookat av " + namn : "Inte bokat"}</div>
+                <div>{x ? "Bokat av " + namn : "Inte bokat"}</div>
                 <div style={{ display: "flex", gap: 15 }}>
                   <div style={{ display: "flex", gap: 5 }}></div>
                   <div style={{ display: "flex", gap: 5 }}></div>
