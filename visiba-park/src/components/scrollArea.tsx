@@ -5,29 +5,33 @@ import { User } from "@supabase/supabase-js";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import "../App.css";
 import DeleteIcon from "../assets/remove.png";
+
 interface Props {
   user: User | null;
-  date: Date;
-  namn: string;
+  date: Date; // Add the 'date' property to Props
+  namn: string; // Add the 'namn' property to Props
 }
 
 function deleteBooking() {
   console.log("din mamma");
 }
 
-const ScrollAreaDemo: React.FC<Props> = ({ user }) => {
+const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
   const [mybookings, setMybookings] = useState<{ date: Date; namn: string }[]>(
     []
   );
 
   useEffect(() => {
-    getMybookings();
-  }, []);
+    if (user) {
+      getMybookings(user.user_metadata.full_name); // Pass the user's email to filter bookings
+    }
+  }, [user]);
 
-  async function getMybookings() {
+  async function getMybookings(userName: string) {
     const { data, error } = await supabase
       .from("bookning")
       .select("datum, Namn")
+      .eq("Namn", userName) // Filter bookings by user's name
       .gte("datum", new Date().toDateString())
       .order("datum");
 
@@ -73,6 +77,19 @@ const ScrollAreaDemo: React.FC<Props> = ({ user }) => {
           </div>
         ) : null}
       </ScrollArea.Viewport>
+      <ScrollArea.Scrollbar
+        className="ScrollAreaScrollbar"
+        orientation="vertical"
+      >
+        <ScrollArea.Thumb className="ScrollAreaThumb" />
+      </ScrollArea.Scrollbar>
+      <ScrollArea.Scrollbar
+        className="ScrollAreaScrollbar"
+        orientation="horizontal"
+      >
+        <ScrollArea.Thumb className="ScrollAreaThumb" />
+      </ScrollArea.Scrollbar>
+      <ScrollArea.Corner className="ScrollAreaCorner" />
     </ScrollArea.Root>
   );
 };

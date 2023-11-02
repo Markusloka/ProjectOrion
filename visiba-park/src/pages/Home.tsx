@@ -7,11 +7,13 @@ import ScrollAreaDemo from "../components/scrollArea";
 
 interface Props {
   user: User | null;
+  date: Date; // Add the 'date' property to Props
+  namn: string; // Add the 'namn' property to Props
   logout: () => Promise<void>;
 }
 //This logout button now works!
 
-function Home({ user, logout }: Props) {
+function Home({ user, logout, date }: Props) {
   function LogoutBtn() {
     return (
       <div className="authentication">
@@ -39,7 +41,7 @@ function Home({ user, logout }: Props) {
       {user && <UserProfile user={user} />}
       <div className="card">
         <Mycalendar user={user} />
-        <ScrollAreaDemo user={user} />
+        <ScrollAreaDemo user={user} date={date} namn={""} />
       </div>
     </div>
   );
