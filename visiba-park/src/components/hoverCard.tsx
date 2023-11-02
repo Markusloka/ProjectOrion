@@ -1,5 +1,6 @@
 import * as HoverCard from "@radix-ui/react-hover-card";
-import supabase from "../database/supabase";
+
+import "./style.hovercard.css";
 
 interface Props {
   date: Date;
