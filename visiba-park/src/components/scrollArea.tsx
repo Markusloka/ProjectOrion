@@ -8,9 +8,11 @@ import DeleteIcon from "../assets/remove.png";
 
 interface Props {
   user: User | null;
+  date: Date; // Add the 'date' property to Props
+  namn: string; //
 }
 
-const ScrollAreaDemo: React.FC<Props> = ({ user }) => {
+const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
   const [mybookings, setMybookings] = useState<{ date: Date; namn: string }[]>(
     []
   );
