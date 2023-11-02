@@ -39,7 +39,7 @@ function Home({ user, logout }: Props) {
       {user && <UserProfile user={user} />}
       <div className="card">
         <Mycalendar user={user} />
-        <ScrollAreaDemo></ScrollAreaDemo>
+        <ScrollAreaDemo user={user} />
       </div>
     </div>
   );
