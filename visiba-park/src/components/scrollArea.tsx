@@ -8,41 +8,24 @@ import DeleteIcon from "../assets/remove.png";
 
 interface Props {
   user: User | null;
-  date: Date; // Add the 'date' property to Props
-  namn: string; // Add the 'namn' property to Props
 }
 
-const deleteBooking = async (dateToDelete: Date) => {
-  try {
-    // Find the booking with the specified date and delete it
-    await supabase
-      .from("bookning")
-      .delete()
-      .eq("datum", dateToDelete.toISOString());
-
-    // After successfully deleting the booking, you can update the state or perform any other necessary actions
-    // For example, you can fetch the updated list of bookings after deletion.
-  } catch (error) {
-    console.error("Error deleting booking:", error);
-  }
-};
-
-const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
+const ScrollAreaDemo: React.FC<Props> = ({ user }) => {
   const [mybookings, setMybookings] = useState<{ date: Date; namn: string }[]>(
     []
   );
 
   useEffect(() => {
     if (user) {
-      getMybookings(user.user_metadata.full_name); // Pass the user's email to filter bookings
+      getMybookings(user.user_metadata.full_name);
     }
-  }, [user]);
+  }, [user!]);
 
   async function getMybookings(userName: string) {
     const { data, error } = await supabase
       .from("bookning")
       .select("datum, Namn")
-      .eq("Namn", userName) // Filter bookings by user's name
+      .eq("Namn", userName)
       .gte("datum", new Date().toDateString())
       .order("datum");
 
@@ -59,10 +42,26 @@ const ScrollAreaDemo: React.FC<Props> = ({ user, date, namn }) => {
     }
   }
 
+  const deleteBooking = async (dateToDelete: Date) => {
+    try {
+      if (user) {
+        await supabase
+          .from("bookning")
+          .delete()
+          .eq("datum", dateToDelete.toISOString());
+
+        // After successfully deleting the booking, trigger a refresh of the bookings
+        getMybookings(user.user_metadata.full_name);
+      }
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+    }
+  };
+
   return (
     <ScrollArea.Root className="ScrollAreaRoot">
       <ScrollArea.Viewport className="ScrollAreaViewport">
-        {user ? ( // Check if user is logged in
+        {user ? (
           <div className="bookingstitle">
             <h1>My bookings</h1>
             <div>
