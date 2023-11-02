@@ -1,0 +1,11 @@
+.bookingCard {
+  display: flex;
+}
+
+.deleteBooking {
+  background-color: transparent;
+}
+.deleteIcon {
+  width: 20px;
+  height: 20px;
+}
