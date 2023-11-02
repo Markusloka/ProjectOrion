@@ -1,9 +1,19 @@
 .bookingCard {
   display: flex;
+  border: black;
+  border-style: outset;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: black;
+  border-style: outset;
 }
 
 .deleteBooking {
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
 }
