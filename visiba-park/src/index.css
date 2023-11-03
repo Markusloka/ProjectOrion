@@ -18,14 +18,13 @@
 .styleCalendar {
   display: flex;
   padding: 20px;
+}
+
+.react-calendar {
   border: black;
   border-style: outset;
 }
 
-.styleCalendar:hover {
-  filter: drop-shadow(0 0 2em #616667aa);
-
-}
 a {
   font-weight: 500;
   color: #646cff;
